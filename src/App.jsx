@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { FaSearch } from 'react-icons/fa';
-import { WiFahrenheit } from 'react-icons/wi';
-import { IoIosSunny } from 'react-icons/io';
 import { FaWind } from 'react-icons/fa';
 import axios from 'axios';
 import { BsCloudsFill } from "react-icons/bs";
 import { LuCloudSunRain } from "react-icons/lu";
-import { WiDaySunnyOvercast } from "react-icons/wi";
+import { IoIosSunny } from 'react-icons/io';
+import { WiDaySunnyOvercast, WiThunderstorm, WiRain, WiSnow, WiFog } from "react-icons/wi";
 
 function App() {
   const [result, setResult] = useState(null);
@@ -42,16 +41,26 @@ function App() {
 
   function getWeatherIcon(description) {
     switch (description) {
+      case 'clear sky':
+        return <IoIosSunny id="sunny_icon" />;
       case 'few clouds':
+      case 'scattered clouds':
+      case 'broken clouds':
         return <BsCloudsFill id="sunny_icon" />;
-      case 'moderate rain':
+      case 'shower rain':
         return <LuCloudSunRain id="sunny_icon" />;
+      case 'rain':
+        return <WiRain id="sunny_icon" />;
+      case 'thunderstorm':
+        return <WiThunderstorm id="sunny_icon" />;
+      case 'snow':
+        return <WiSnow id="sunny_icon" />;
+      case 'mist':
+        return <WiFog id="sunny_icon" />;
       case 'overcast clouds':
         return <WiDaySunnyOvercast id="sunny_icon" />;
-      case 'Sunny':
-        return <IoIosSunny id="sunny_icon" />;
       default:
-        return null;
+        return <IoIosSunny id="sunny_icon" />; // Default icon if description is not matched
     }
   }
 
@@ -89,7 +98,7 @@ function App() {
             <p>Pressure: {result.main.pressure} hPa</p>
             <p>Humidity: {result.main.humidity}%</p>
             <p>
-              Wind Speed <FaWind id="wind_speed_icon" />: {result.wind.speed} m/s
+              Wind Speed <FaWind id="wind_icon" />: {result.wind.speed} m/s
             </p>
           </div>
         </>
