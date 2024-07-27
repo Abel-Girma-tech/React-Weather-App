@@ -1,14 +1,18 @@
+/* Global Styles */
 * {
   margin: 0;
   padding: 0;
 }
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: black;
+  height: 100vh;
 }
 
+/* Container */
 #app {
   position: relative;
   height: 90vh;
@@ -31,15 +35,19 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(
-    0,
-    0,
-    0,
-    0.5
-  ); /* Adjust the opacity to make the overlay darker or lighter */
+  background: rgba(0, 0, 0, 0.5); /* Adjust the opacity to make the overlay darker or lighter */
   z-index: -1; /* Ensure the overlay is behind the content */
 }
 
+/* Header */
+#weather_app_name {
+  color: yellow;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Search Area */
 #search_div {
   width: 100%;
   padding: 10px;
@@ -47,8 +55,10 @@ body {
   justify-content: center;
   align-items: center;
 }
-#weather_app_name {
-  color: yellow;
+
+#search_H_one {
+  margin-right: 10px;
+  font-size: 1.2rem;
 }
 
 #search_area_div {
@@ -58,30 +68,29 @@ body {
   width: 60%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0 10px;
 }
 
 #search_area_input {
   outline: none;
   border: none;
   width: 80%;
-  font-size: 20px;
+  font-size: 1rem;
 }
 
-#search_H_one {
-  margin-right: 10px;
-}
-#seach_icon {
+#search_icon {
   color: black;
-  width: 15%;
   cursor: pointer;
 }
 
+/* Weather Icons */
 #sunny_icon {
   color: rgb(234, 178, 24);
   font-size: 70px;
 }
 
+/* Weather Results */
 #weather_result_div {
   display: flex;
   flex-direction: column;
@@ -93,15 +102,112 @@ body {
 #results_by_number {
   width: 80%;
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
-  grid-column-gap: 60px;
   align-items: center;
   justify-content: center;
   margin-top: 20px;
   padding: 10px;
   font-weight: lighter;
+  text-align: center;
 }
-#wind_speedZ_icon {
+
+#wind_speed_icon {
   color: rgb(0, 225, 255);
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+  #app {
+    width: 90vw;
+  }
+
+  #search_area_input {
+    font-size: 0.9rem;
+  }
+
+  #weather_app_name {
+    font-size: 1.8rem;
+  }
+
+  #results_by_number {
+    width: 90%;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  #app {
+    width: 95vw;
+    padding: 20px;
+  }
+
+  #weather_app_name {
+    font-size: 1.5rem;
+  }
+
+  #search_H_one {
+    font-size: 1rem;
+  }
+
+  #search_area_input {
+    font-size: 0.8rem;
+  }
+
+  #search_icon {
+    font-size: 1.2rem;
+  }
+
+  #sunny_icon {
+    font-size: 60px;
+  }
+
+  #results_by_number {
+    width: 100%;
+    grid-gap: 10px;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  #app {
+    width: 100vw;
+    padding: 10px;
+  }
+
+  #weather_app_name {
+    font-size: 1.2rem;
+  }
+
+  #search_H_one {
+    font-size: 0.8rem;
+    margin-right: 5px;
+  }
+
+  #search_area_div {
+    width: 80%;
+    height: 35px;
+  }
+
+  #search_area_input {
+    font-size: 0.7rem;
+  }
+
+  #search_icon {
+    font-size: 1rem;
+  }
+
+  #sunny_icon {
+    font-size: 50px;
+  }
+
+  #weather_result_div {
+    margin-top: 20px;
+  }
+
+  #results_by_number {
+    width: 100%;
+    grid-gap: 5px;
+    grid-template-columns: 1fr;
+  }
 }
