@@ -5,6 +5,9 @@ import { WiFahrenheit } from 'react-icons/wi';
 import { IoIosSunny } from 'react-icons/io';
 import { FaWind } from 'react-icons/fa';
 import axios from 'axios';
+import { BsCloudsFill } from "react-icons/bs";
+import { LuCloudSunRain } from "react-icons/lu";
+import { WiDaySunnyOvercast } from "react-icons/wi";
 
 function App() {
   const [result, setResult] = useState(null);
@@ -37,6 +40,21 @@ function App() {
     }
   }
 
+  function getWeatherIcon(description) {
+    switch (description) {
+      case 'few clouds':
+        return <BsCloudsFill id="sunny_icon" />;
+      case 'moderate rain':
+        return <LuCloudSunRain id="sunny_icon" />;
+      case 'overcast clouds':
+        return <WiDaySunnyOvercast id="sunny_icon" />;
+      case 'Sunny':
+        return <IoIosSunny id="sunny_icon" />;
+      default:
+        return null;
+    }
+  }
+
   return (
     <div id="app">
       <h2 id="weather_app_name">Bella - Weather</h2>
@@ -59,7 +77,7 @@ function App() {
         <>
           <div id="weather_result_div">
             <h3>{result.name}</h3>
-            <IoIosSunny id="sunny_icon" />
+            {getWeatherIcon(result.weather[0].description)}
             <h2>{Math.round(result.main.temp - 273.15)}°C</h2>
             <p>{result.weather[0].description}</p>
           </div>
@@ -71,8 +89,7 @@ function App() {
             <p>Pressure: {result.main.pressure} hPa</p>
             <p>Humidity: {result.main.humidity}%</p>
             <p>
-              Wind Speed <FaWind id="wind_speed_icon" />: {result.wind.speed}{' '}
-              m/s
+              Wind Speed <FaWind id="wind_speed_icon" />: {result.wind.speed} m/s
             </p>
           </div>
         </>
