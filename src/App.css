@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+#app {
+  position: relative;
+  height: 90vh;
+  width: 80vw;
+  background: url('https://images.tech.co/wp-content/uploads/2015/06/weather.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+#app::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust the opacity to make the overlay darker or lighter */
+  z-index: -1; /* Ensure the overlay is behind the content */
+}
+
+#search_div {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#weather_app_name {
+  color: yellow;
+}
+
+#search_area_div {
+  background-color: white;
+  border-radius: 15px;
+  height: 40px;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#search_area_input {
+  outline: none;
+  border: none;
+  width: 80%;
+}
+
+#search_H_one {
+  margin-right: 10px;
+}
+#seach_icon {
+  color: black;
+  width: 15%;
+  cursor: pointer;
+}
+
+#sunnYy_icon {
+  color: rgb(234, 178, 24);
+  font-size: 150px;
+}
+
+#weather_result_div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+#results_by_number {
+  width: 80%;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 20px;
+  grid-column-gap: 60px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  padding: 10px;
+  font-weight: lighter;
+}
+#wind_speedZ_icon {
+  color: rgb(0, 225, 255);
+}
